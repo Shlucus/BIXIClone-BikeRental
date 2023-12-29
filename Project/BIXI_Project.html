@@ -13,20 +13,41 @@
 <body>
     <div id="app_container">
         <img id="Bixi_logo" src="./assets/vectors/Bixi_logo.svg" alt="BIXI Vector">
-        <h1>Bike Rental</h1>
+        <h1>Rent-A-Bike</h1>
         <br>
 
-        <div id="input_container">
-            
+        <div id="user_input_container">
+
             <input id="nameInput" type="text" placeholder="First name">
             <input id="emailInput" type="email" placeholder="Email Address">
-            <input id="stationInput" type="number" placeholder="Station ID">
-            <button onclick="DisplaySearchResults()" id="search_butt">Search</button>
+            <input id="stationInput" type="number" placeholder="Starting Station ID">
+            <button onclick="DisplaySearchResults()" class="search_butt">Search</button>
         </div>
 
-        
 
-        <div id="result"></div>
+
+        <div id="user_input_results"></div>
+
+
+        <div id="trip_input_container" style="display: none;">
+            <h2>Maxium Trip Duration</h2>
+
+
+
+            <div id="slider-container">
+                <div id="slider-value">120 min</div>
+                <div class="slidecontainer">
+                    <input type="range" min="1" max="240" value="120" class="slider" id="myRange"
+                        oninput="updateSliderValue(this.value)">
+                </div>
+            </div>
+
+
+            <button onclick="DisplayTripResults()" class="search_butt">Confirm trip</button>
+
+        </div>
+
+        <div id="trip_input_results"></div>
 
     </div>
 </body>

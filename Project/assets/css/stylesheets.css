@@ -1,8 +1,3 @@
-
-
-
-
-
 body {
     display: flex;
     flex-direction: column;
@@ -32,15 +27,15 @@ body {
 
 button {
     height: 50px;
-    border: solid ;
+    border: solid;
     border-color: #df211d;
-    border-radius: 1000px;
+    border-radius: 20px;
     background-color: #df211d;
     color: #ffffff;
-    transition: background-color 0.5s;
+    transition: background-color 0.5s, color 0.5s;
     background-color: .1 ease-in-out;
     padding: 10px;
-    
+
 }
 
 button:hover {
@@ -51,8 +46,35 @@ button:hover {
     color: #df211d;
 }
 
+h1 {
+    font-size: 27px;
+}
 
-#search_butt {
+h2 {
+    font-size: 20px;
+}
+
+h3 {
+    font-size: 15px;
+}
+
+
+p,
+li,
+button,
+input,
+h1,
+h2,
+div {
+    text-align: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: #ffffff;
+}
+
+
+
+
+.search_butt {
     margin-top: 5px;
     width: 80%;
     font-size: 21px;
@@ -60,26 +82,12 @@ button:hover {
 
 
 
-h1 {
-    font-size: 21px;
-    color: #000000;
-    text-decoration: underline;
-}
 
-img {
+#Bixi_logo {
     filter: drop-shadow(5px 8px 2px #000000);
 }
 
-p,
-li,
-button,
-input,
-h1,
-h2 {
-    text-align: center;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    color: #ffffff;
-}
+
 
 /* h2{
     margin: 5px 0px 0px 0px;
@@ -89,13 +97,16 @@ h2 {
     height: 60px;
 }
 
-#input_container {
+#user_input_container{
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     width: 90%;
     margin-bottom: 50px;
+
+    padding-top: 10px;
+    border-top: 1px solid rgb(91, 91, 91);
 }
 
 input {
@@ -108,45 +119,59 @@ input {
     margin: 5px
 }
 
-
-/* MEMBERSHIP CONTAINER */
+/* ---------------------------
+    MEMBERSHIP CONTAINER 
+-------------------------- */
 #membership_container,
 #station_container {
     width: 100%;
     position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: center; 
+    justify-content: center;
     /* align-items: center; */
     border: 10px #14af5a;
     border-radius: 10px;
     padding: 5px;
-    margin: 0 10px 10px 10px; /* Adjust the margin values as needed */
+    margin: 0 10px 10px 0;
+    /* Adjust the margin values as needed */
     background-color: rgb(39, 37, 37);
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0);
     transition: transform 0.3s;
 }
 
- #membership_container h2{
+#membership_container h2 {
     margin: 5px 0px 0px 0px;
 }
 
 .membership-list li {
+    max-width: 80%;
     text-align: left;
-    border-top: 1px solid #ccc; /* Add a border at the bottom of each list item */
-    padding: 8px; /* Add padding for better spacing */
+    border-top: 1px solid #ccc;
+    /* Add a border at the bottom of each list item */
+    padding: 8px;
+    /* Add padding for better spacing */
 }
 
 
-
-/* STATION CONTAINER */
-
-#stationId-text{
-color: rgb(91, 91, 91);
+/* ---------------------------
+    STATION CONTAINER 
+-------------------------- */
+#station_container {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
 }
 
-#station-availabilities
-{
+
+#stationId-text {
+    color: rgb(91, 91, 91);
+    padding-bottom: 5px;
+    border-bottom: 1px solid rgb(91, 91, 91);
+
+}
+
+#station-availabilities {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -159,13 +184,11 @@ color: rgb(91, 91, 91);
     flex-direction: column;
 }
 
-#station-bikes
-{
-    padding-right: 40px;
-    border-right: 1px solid rgb(91, 91, 91); /* Add a white border to the right of station-bikes */
+#station-bikes {
+    padding-right: 70px;
+    border-right: 1px solid rgb(91, 91, 91);
+    /* Add a white border to the right of station-bikes */
 }
-
-
 
 
 #station-bikes h1,
@@ -174,3 +197,95 @@ color: rgb(91, 91, 91);
     font-size: 30px;
     margin: 5px 0 5px 0;
 }
+
+#Station_Banner {
+    /* margin: 5px; */
+    height: 45px;
+    border-radius: 10px;
+    /* width: 100%; */
+}
+
+
+
+
+/* -----------------------
+        SLIDER 
+-------------------------- */
+
+#slider-container {
+    
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.slidecontainer {
+    width: 100%;
+}
+
+.slidecontainer input{
+   margin: 0;
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 80%;
+    height: 25px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.slider:hover {
+    opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    background: #df211d;
+    cursor: pointer;
+    border-radius: 100%;
+}
+
+#slider-value {
+    font-size: 18px;
+    color: #fff;
+    margin-top: 10px;
+}
+
+
+/* ---------------------------
+    DURATION INPUT CONTAINER 
+-------------------------- */
+#trip_input_container {
+    
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 90%;
+    margin-bottom: 50px;
+
+
+    margin-top: 20px;
+    border-top: 1px solid rgb(91, 91, 91);
+    
+}
+
+/* #user_input_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 90%;
+    margin-bottom: 50px;
+
+    padding-top: 10px;
+    border-top: 1px solid rgb(91, 91, 91);
+} */

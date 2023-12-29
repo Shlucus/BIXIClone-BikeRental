@@ -3,11 +3,12 @@
 "use strict"
 
 // HTML Elements
-let searchButton = document.getElementById('#search_button');
-let NameInputElement = document.querySelector('#nameInput');  
-let EmailInputElement = document.querySelector('#emailInput');  
-let StationInputElement = document.querySelector('#stationInput');  
-let resultDiv = document.getElementById('result');
+let searchButton = document.getElementById('#search_butt');
+let NameInputElement = document.querySelector('#nameInput');
+let EmailInputElement = document.querySelector('#emailInput');
+let StationInputElement = document.querySelector('#stationInput');
+let resultDiv = document.getElementById('user_input_results');
+let durationSlider = document.getElementById('slider-container')
 
 //API variables
 const API_URL = "http://129.80.194.57";
@@ -18,29 +19,28 @@ let apiQuery;
 
 
 
+async function DisplaySearchResults() {
 
-async function DisplaySearchResults()
-{
+    resultDiv.innerHTML = "";
 
     let userData = await GetUserInfo();
-    console.log(userData); 
-    if(userData.length === 0)
-    {
+    console.log(userData);
+    if (userData.length === 0) {
         resultDiv.innerHTML = '<h1>No user match.</h1>'
         return
     }
 
-    let membershipData = await GetMembershipInfo(userData); 
-    console.log(membershipData); 
+    let membershipData = await GetMembershipInfo(userData);
+    console.log(membershipData);
 
     resultDiv.innerHTML += `
     <div id="membership_container">
         <h2>${membershipData[0].MembershipTypeName}</h2>
         <ul class="membership-list">
-            <li>Unlocking Fee: $${membershipData[0].UnlockingFee}</li>
-            <li>Security Deposit:   $${membershipData[0].SecurityDeposit}</li>
-            <li>0 to ${membershipData[0].FreeMinutes} min: Unlimited</li>
-            <li>45+ min : ${membershipData[0].RegularBikePricePerMinute}₵ / minute</li>
+            <li> <b>Unlocking Fee</b> : $${membershipData[0].UnlockingFee}</li>
+            <li> <b>Security Deposit</b> :   $${membershipData[0].SecurityDeposit}</li>
+            <li> <b>0 to ${membershipData[0].FreeMinutes} min</b> : Unlimited</li>
+            <li> <b>45+ min</b> : ${membershipData[0].RegularBikePricePerMinute}₵ / minute</li>
         </ul>
     </div>
 `;
@@ -55,27 +55,27 @@ async function DisplaySearchResults()
         <div id="station-availabilities">
 
             <div id="station-bikes">
-                <h1>${stationData[0].RegularBikesCount}</h1>
+                <h1>${stationData[0].RegularBikesCount}</h2>
                 <p>Bikes</p>
             </div>
 
             <div id="station-docks">
-            <h1>${stationData[0]['Total Docks']}</h1>
-            <p>Docks</p>
+                <h1>${stationData[0]['Total Docks']}</h2>
+                <p>Docks</p>
             </div>
         </div>
-        <p id="stationId-text" >Bike Station: ${stationData[0].StationId}
-
+        <p id="stationId-text" >Bike Station: ${stationData[0].StationId}</p>
+        <img id="Station_Banner" src="./assets/images/Bixi-all-year-Application-Banner-V1-2023.png" alt="Station Banner">
     </div>
 `;
 
-
+    document.getElementById('trip_input_container').style.display = 'flex';
+    document.getElementById('user_input_container').style.display = 'none';
 }
 
 
 
-async function GetUserInfo() 
-{
+async function GetUserInfo() {
     let firstName = NameInputElement.value;
     let email = EmailInputElement.value;
 
@@ -100,8 +100,7 @@ async function GetUserInfo()
 }
 
 
-async function GetMembershipInfo(userData) 
-{
+async function GetMembershipInfo(userData) {
 
     let membershipID = userData[0].MembershipTypeId
 
@@ -115,8 +114,7 @@ async function GetMembershipInfo(userData)
 }
 
 
-async function getStationInfo() 
-{
+async function getStationInfo() {
     let stationID = StationInputElement.value;
 
     // const response = await fetch(`${STATION_INFO_URL}${stationID}`);
@@ -130,12 +128,22 @@ async function getStationInfo()
 }
 
 
+async function DisplayTripResults() {
+
+
+
+
+}
 
 
 
 
 
 
+function updateSliderValue(value) {
+    const sliderValueElement = document.getElementById('slider-value');
+    sliderValueElement.innerText = value + " min";
+}
 
 
 
