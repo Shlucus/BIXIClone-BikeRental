@@ -12,12 +12,15 @@
 
 <body>
     <div id="app_container">
-        <img id="Bixi_logo" src="./assets/vectors/Bixi_logo.svg" alt="BIXI Vector">
-        <h1>Rent-A-Bike</h1>
-        <br>
+
+        <div id="app_splash">
+            <img id="Bixi_logo" src="./assets/vectors/Bixi_logo.svg" alt="BIXI Vector">
+            <h1>Rent-A-Bike</h1>
+            <!-- <br> -->
+        </div>
 
         <div id="user_input_container">
-
+            <h3>Please input your:</h3>
             <input id="nameInput" type="text" placeholder="First name">
             <input id="emailInput" type="email" placeholder="Email Address">
             <input id="stationInput" type="number" placeholder="Starting Station ID">
@@ -43,9 +46,12 @@
             </div>
 
 
-            <button onclick="DisplayTripResults()" class="search_butt">Confirm trip</button>
+            <button id="confirmTripButton" onclick="DisplayPossibleTrips()" class="search_butt">Next</button>
+
 
         </div>
+
+
 
         <div id="trip_input_results"></div>
 

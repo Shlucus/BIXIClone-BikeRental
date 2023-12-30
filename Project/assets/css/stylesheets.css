@@ -25,6 +25,12 @@ body {
     overflow: hidden;
 }
 
+#app_splash {
+    width: 80%;
+    border-bottom: 1px solid rgb(91, 91, 91);
+    margin: 10px;
+}
+
 button {
     height: 50px;
     border: solid;
@@ -71,6 +77,8 @@ div {
     color: #ffffff;
 }
 
+label { color: rgb(91, 91, 91); }
+
 
 
 
@@ -106,8 +114,9 @@ div {
     margin-bottom: 50px;
 
     padding-top: 10px;
-    border-top: 1px solid rgb(91, 91, 91);
 }
+
+
 
 input {
     height: 50px;
@@ -163,12 +172,17 @@ input {
     /* align-items: center; */
 }
 
+.station_containers {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 
 #stationId-text {
     color: rgb(91, 91, 91);
     padding-bottom: 5px;
     border-bottom: 1px solid rgb(91, 91, 91);
-
 }
 
 #station-availabilities {
@@ -289,3 +303,27 @@ input {
     padding-top: 10px;
     border-top: 1px solid rgb(91, 91, 91);
 } */
+
+
+
+#trip_input_results .station_containers:hover {
+    transform: scale(1.05);
+}
+
+
+.station_containers {
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+    border: 10px #14af5a;
+    border-radius: 10px;
+    padding: 15px 15px 15px 0;
+    margin: 0 0 30px 0;
+    /* Adjust the margin values as needed */
+    background-color: rgb(39, 37, 37);
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0);
+    transition: transform 0.3s;
+}
