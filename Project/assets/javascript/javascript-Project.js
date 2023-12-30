@@ -58,16 +58,14 @@ async function DisplaySearchResults() {
     let stationID = stationInputElement.value;
 
     //If user leaves a field empty, stop the function.
-    // if (firstName === "" || email === "" || stationID === "")
-    // {
-    //     alert("Please fill in all fields");
-    //     return
-    // }
+    if (firstName === "" || email === "" || stationID === "")
+    {
+        alert("Please fill in all fields.");
+        return
+    }
 
     // Use API to fetch user info from the users input values and assign response to variable.
-    // let userData = await fetchAPIData(`${USER_INFO_URL}/${firstName}/${email}`);
-    let userData = await fetchAPIData(`${USER_INFO_URL}/Zach/aang@avatar.com`);
-    console.log(userData);
+    let userData = await fetchAPIData(`${USER_INFO_URL}/${firstName}/${email}`);
 
     //If the fetch returns an empty array, no users were found:
     if (userData.length === 0) {
@@ -80,7 +78,6 @@ async function DisplaySearchResults() {
 
     // Use API to fetch membership details of the user.
     let membershipData = await fetchAPIData(`${MEMBER_INFO_URL}/${membershipID}`);
-    console.log(membershipData);
 
     //Fill the Result HTML element with the results of the fetch.
     userResultDiv.innerHTML += `
@@ -98,7 +95,11 @@ async function DisplaySearchResults() {
 
     // Fetch station data based on the user's starting station input
     let stationData = await fetchAPIData(`${STATION_INFO_URL}/${stationID}`);
-    console.log(stationData)
+    //If the fetch returns an empty array, no matching stations were found:
+    if (stationData.length === 0) {
+        userResultDiv.innerHTML += '<h1>No Station Match.</h1>' // display to user.
+        return
+    }
 
     // Display the starting station information in the user result div
     userResultDiv.innerHTML += `
@@ -140,49 +141,43 @@ async function DisplayPossibleTrips() {
 
     // Assign the current slider value to variable
     let selectedMinutes = document.getElementById('myRange').value;
-    console.log(selectedMinutes)
 
     //fetch average bike speed from API
     let speedData = await fetchAPIData(AVERAGE_SPEED_URL);
     let speedInKiloPerMin = speedData.speed; // In Km/h
     let SpeedInMetersPerMin = (speedInKiloPerMin * 1000) / 60;
-    console.log(SpeedInMetersPerMin)
 
     // calculate the max possible distance the user can cover on their trip.
-    let maxPossibleDistance = SpeedInMetersPerMin * selectedMinutes
-    console.log(maxPossibleDistance)
+    let maxPossibleDistance = SpeedInMetersPerMin * selectedMinutes;
 
     // retrieve the user's previously inputted Starting Station ID
     let StartingStationID = stationInputElement.value;
-    console.log(StartingStationID)
 
     // fetch nearby stations data from API and assign to variable
-    let nearbyStationsData = await fetchAPIData(`${NEARBY_STATIONS_URL}/${StartingStationID}`)
-    console.log(nearbyStationsData)
+    let nearbyStationsData = await fetchAPIData(`${NEARBY_STATIONS_URL}/${StartingStationID}`);
 
     // Filter out all stations who arent within possible range. If the filtered array is empty, escape function and display it to user
     const filteredStations = nearbyStationsData.filter(station => station.Distance <= maxPossibleDistance);
     if (filteredStations.length === 0) {
-        tripResultDiv.innerHTML = '<h1>No trip results.</h1>'
-        return
+        tripResultDiv.innerHTML = '<h1>No trip results.</h1>';
+        return;
     }
-    console.log(filteredStations)
 
     // Clear the screen and only display the new information:
     document.getElementById('trip_input_container').style.display = 'none';
     userResultDiv.innerHTML = "";
 
     // Display instructions
-    tripResultDiv.innerHTML = "<h3>Click on a desired End Station:</h3?"
+    tripResultDiv.innerHTML = "<h3>Click on a desired End Station:</h3?";
 
     // display each(filtered) nearby station as a HTML container:
     filteredStations.forEach(async station => {
 
         // Use fetch to retreive the information of each station.
-        let stationData = await fetchAPIData(`${STATION_INFO_URL}/${station.SecondStationId}`)
+        let stationData = await fetchAPIData(`${STATION_INFO_URL}/${station.SecondStationId}`);
 
         //Calculate the amount of AVAILABLE Docks 
-        let availableDocks = (stationData[0]['Total Docks']) - (stationData[0].RegularBikesCount + stationData[0].ElectricBikesCount)
+        let availableDocks = (stationData[0]['Total Docks']) - (stationData[0].RegularBikesCount + stationData[0].ElectricBikesCount);
 
         // Pupulate the html with container consisting of the station info (Name,ID,AvailableDocks). 
         // Each container has a button that selects the station as the user's endStation and finds the path to that station.
@@ -225,8 +220,6 @@ async function DisplayTripPath(destinationId) {
     // retreive the station path from fetching the API using the ID's of the start and end stations.
     let pathData = await fetchAPIData(`${STATION_PATH_URL}/${startStationId}/${endStationId}`);
 
-    console.log(pathData);
-
     // retreive the array of stations that make up the path.
     let stations = pathData[0]; // Assuming the stations are in the first element of pathData
 
@@ -251,7 +244,7 @@ async function DisplayTripPath(destinationId) {
             let distanceData = await fetchAPIData(`${STATION_DISTANCE_URL}/${currentStation.StationId}/${nextStation.StationId}`);
             let connectionDistance = distanceData[0].Distance;
 
-            // start a delay based on the distance (100 meters = 1 second) 
+            // start a delay based on the distance (100 meters = 1 second) *keeping it shorter for practicality instead of real time*
             await delay(connectionDistance * 10);
         }
     }
@@ -260,8 +253,6 @@ async function DisplayTripPath(destinationId) {
     const destinationStation = pathData[0][pathData[0].length - 1];
     tripResultDiv.innerHTML += `<h3>Arrived at destination station ${destinationStation.StationId}!</h3>`;
 }
-
-
 
 
 
