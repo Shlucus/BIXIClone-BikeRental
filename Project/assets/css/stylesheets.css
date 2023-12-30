@@ -1,11 +1,30 @@
+/* __/\\\\\\\\\\\\\______/\\\\\\\\\___________/\\\\\___________/\\\\\\\\\\\__/\\\\\\\\\\\\\\\________/\\\\\\\\\__/\\\\\\\\\\\\\\\_        
+ _\/\\\/////////\\\__/\\\///////\\\_______/\\\///\\\________\/////\\\///__\/\\\///////////______/\\\////////__\///////\\\/////__       
+  _\/\\\_______\/\\\_\/\\\_____\/\\\_____/\\\/__\///\\\__________\/\\\_____\/\\\_______________/\\\/_________________\/\\\_______      
+   _\/\\\\\\\\\\\\\/__\/\\\\\\\\\\\/_____/\\\______\//\\\_________\/\\\_____\/\\\\\\\\\\\______/\\\___________________\/\\\_______     
+    _\/\\\/////////____\/\\\//////\\\____\/\\\_______\/\\\_________\/\\\_____\/\\\///////______\/\\\___________________\/\\\_______    
+     _\/\\\_____________\/\\\____\//\\\___\//\\\______/\\\__________\/\\\_____\/\\\_____________\//\\\__________________\/\\\_______   
+      _\/\\\_____________\/\\\_____\//\\\___\///\\\__/\\\_____/\\\___\/\\\_____\/\\\______________\///\\\________________\/\\\_______  
+       _\/\\\_____________\/\\\______\//\\\____\///\\\\\/_____\//\\\\\\\\\______\/\\\\\\\\\\\\\\\____\////\\\\\\\\\_______\/\\\_______ 
+        _\///______________\///________\///_______\/////________\/////////_______\///////////////________\/////////________\///________
+
+
+-----------------------------.
+ * Student: Lucas Lalumiere  |
+ * ID: 2278139               |
+ * BIXI PROJECT - CSS        |
+ *--------------------------*/
+
 body {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 0;
-
-
+    background-image: url('../images/bixi-wallpaper-dark.png'); 
+    background-size: cover; 
+    background-repeat: no-repeat; 
     background-color: rgba(27, 27, 27, 0.985)
+    
 }
 
 #app_container {
@@ -14,7 +33,7 @@ body {
     align-items: center;
     justify-content: center;
     box-shadow: 0 8px 16px 0 rgb(0, 0, 0);
-    /* background-color: rgb(255, 255, 255); */
+    background-color: rgba(27, 27, 27, 0.985);
     border: 1px solid rgb(205, 202, 202);
     padding: 20px;
     margin-top: 10%;
@@ -64,7 +83,6 @@ h3 {
     font-size: 15px;
 }
 
-
 p,
 li,
 button,
@@ -79,27 +97,15 @@ div {
 
 label { color: rgb(91, 91, 91); }
 
-
-
-
 .search_butt {
     margin-top: 5px;
     width: 80%;
     font-size: 21px;
 }
 
-
-
-
 #Bixi_logo {
     filter: drop-shadow(5px 8px 2px #000000);
 }
-
-
-
-/* h2{
-    margin: 5px 0px 0px 0px;
-} */
 
 #Bixi_logo {
     height: 60px;
@@ -115,8 +121,6 @@ label { color: rgb(91, 91, 91); }
 
     padding-top: 10px;
 }
-
-
 
 input {
     height: 50px;
@@ -201,9 +205,7 @@ input {
 #station-bikes {
     padding-right: 70px;
     border-right: 1px solid rgb(91, 91, 91);
-    /* Add a white border to the right of station-bikes */
 }
-
 
 #station-bikes h1,
 #station-docks h1 {
@@ -219,14 +221,11 @@ input {
     /* width: 100%; */
 }
 
-
-
-
 /* -----------------------
         SLIDER 
 -------------------------- */
 
-#slider-container {
+#slider_container {
     
     display:flex;
     flex-direction: column;
@@ -234,11 +233,11 @@ input {
     width: 100%;
 }
 
-.slidecontainer {
+.slide_container {
     width: 100%;
 }
 
-.slidecontainer input{
+.slide_container input{
    margin: 0;
 }
 
@@ -267,7 +266,7 @@ input {
     border-radius: 100%;
 }
 
-#slider-value {
+#slider_value {
     font-size: 18px;
     color: #fff;
     margin-top: 10px;
@@ -292,24 +291,18 @@ input {
     
 }
 
-/* #user_input_container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 90%;
-    margin-bottom: 50px;
-
-    padding-top: 10px;
-    border-top: 1px solid rgb(91, 91, 91);
-} */
-
-
-
 #trip_input_results .station_containers:hover {
     transform: scale(1.05);
 }
 
+#trip_input_results
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+
+}
 
 .station_containers {
     width: 100%;
@@ -320,10 +313,45 @@ input {
     /* align-items: center; */
     border: 10px #14af5a;
     border-radius: 10px;
-    padding: 15px 15px 15px 0;
+    padding: 15px;
     margin: 0 0 30px 0;
     /* Adjust the margin values as needed */
     background-color: rgb(39, 37, 37);
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0);
     transition: transform 0.3s;
 }
+
+
+#additional_info_container {
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+    border: 10px #14af5a;
+    border-radius: 10px;
+    padding: 5px;
+    margin: 0 10px 10px 0;
+    /* Adjust the margin values as needed */
+    background-color: rgb(39, 37, 37);
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0);
+    transition: transform 0.3s;
+    /* border-top: 1px solid rgb(91, 91, 91); */
+}
+
+.station_path_buttons
+{
+    width: 80%;
+    margin: 5px;
+}
+
+.station_path_buttons button
+{
+    width: 80%;
+    margin: 5px;
+}
+
+
+
+

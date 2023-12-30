@@ -1,3 +1,20 @@
+<!-- __/\\\\\\\\\\\\\______/\\\\\\\\\___________/\\\\\___________/\\\\\\\\\\\__/\\\\\\\\\\\\\\\________/\\\\\\\\\__/\\\\\\\\\\\\\\\_        
+ _\/\\\/////////\\\__/\\\///////\\\_______/\\\///\\\________\/////\\\///__\/\\\///////////______/\\\////////__\///////\\\/////__       
+  _\/\\\_______\/\\\_\/\\\_____\/\\\_____/\\\/__\///\\\__________\/\\\_____\/\\\_______________/\\\/_________________\/\\\_______      
+   _\/\\\\\\\\\\\\\/__\/\\\\\\\\\\\/_____/\\\______\//\\\_________\/\\\_____\/\\\\\\\\\\\______/\\\___________________\/\\\_______     
+    _\/\\\/////////____\/\\\//////\\\____\/\\\_______\/\\\_________\/\\\_____\/\\\///////______\/\\\___________________\/\\\_______    
+     _\/\\\_____________\/\\\____\//\\\___\//\\\______/\\\__________\/\\\_____\/\\\_____________\//\\\__________________\/\\\_______   
+      _\/\\\_____________\/\\\_____\//\\\___\///\\\__/\\\_____/\\\___\/\\\_____\/\\\______________\///\\\________________\/\\\_______  
+       _\/\\\_____________\/\\\______\//\\\____\///\\\\\/_____\//\\\\\\\\\______\/\\\\\\\\\\\\\\\____\////\\\\\\\\\_______\/\\\_______ 
+        _\///______________\///________\///_______\/////________\/////////_______\///////////////________\/////////________\///________
+
+
+-----------------------------.
+ * Student: Lucas Lalumiere  |
+ * ID: 2278139               |
+ * BIXI PROJECT - HTML       |
+ *-------------------------- -->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,47 +30,46 @@
 <body>
     <div id="app_container">
 
+        <!-- The bixi header -->
         <div id="app_splash">
             <img id="Bixi_logo" src="./assets/vectors/Bixi_logo.svg" alt="BIXI Vector">
             <h1>Rent-A-Bike</h1>
-            <!-- <br> -->
         </div>
 
+        <!-- Contains 1st user input  -->
         <div id="user_input_container">
             <h3>Please input your:</h3>
-            <input id="nameInput" type="text" placeholder="First name">
-            <input id="emailInput" type="email" placeholder="Email Address">
-            <input id="stationInput" type="number" placeholder="Starting Station ID">
+            <input id="name_Input" type="text" placeholder="First name">
+            <input id="email_Input" type="email" placeholder="Email Address">
+            <input id="station_Input" type="number" placeholder="Starting Station ID">
             <button onclick="DisplaySearchResults()" class="search_butt">Search</button>
         </div>
 
-
-
+        <!-- Container for the results found in JS -->
         <div id="user_input_results"></div>
 
-
+        <!-- Contains the 2nd user input prompt (initally hidden) -->
         <div id="trip_input_container" style="display: none;">
             <h2>Maxium Trip Duration</h2>
 
-
-
-            <div id="slider-container">
-                <div id="slider-value">120 min</div>
-                <div class="slidecontainer">
+            <!-- Contains the Slider -->
+            <div id="slider_container">
+                <div id="slider_value">120 min</div>
+                <div class="slide_container">
                     <input type="range" min="1" max="240" value="120" class="slider" id="myRange"
                         oninput="updateSliderValue(this.value)">
                 </div>
             </div>
 
-
-            <button id="confirmTripButton" onclick="DisplayPossibleTrips()" class="search_butt">Next</button>
-
-
+            <!-- Button to forward the users Slider value and find nearby stations -->
+            <button id="confirm_trip_button" onclick="DisplayPossibleTrips()" class="search_butt">Next</button>
         </div>
 
-
-
+        <!-- Container for the nearby station results found in JS -->
         <div id="trip_input_results"></div>
+
+        <!-- Container for the additional station info should a user ask for it. -->
+        <div id="station_aditional_info"></div>
 
     </div>
 </body>
